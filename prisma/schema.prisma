@@ -11,13 +11,13 @@ datasource db {
 }
 
 model User {
-  id            String @id @default(uuid())
+  id            String  @id @default(uuid())
   name          String
-  email         String @unique
-  RA            BigInt
+  email         String  @unique
+  RA            BigInt?
   password_hash String
 
-  user_Types    UserTypes @relation(fields: [users_TypesId], references: [id])
+  user_Types    UserTypes? @relation(fields: [users_TypesId], references: [id])
   users_TypesId String
 
   @@map("users")

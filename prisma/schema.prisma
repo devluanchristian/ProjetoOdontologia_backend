@@ -18,7 +18,7 @@ model User {
   password_hash String
 
   user_Types    UserTypes? @relation(fields: [users_TypesId], references: [id])
-  users_TypesId String
+  users_TypesId String?
 
   @@map("users")
 }

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  api-pratica-pg:
+    image: bitnami/postgresql
+    ports: 
+    - 5432:5432
+    environment: 
+    - POSTGRESQL_USERNAME=odonto
+    - POSTGRESQL_PASSWORD=odonto
+    - POSTGRESQL_DATABASE=apiodonto

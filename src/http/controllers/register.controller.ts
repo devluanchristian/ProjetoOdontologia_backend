@@ -20,7 +20,7 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
       email,
       password,
     })
-    reply.status(201).send({ user })
+    reply.status(201).send(user)
   } catch (error) {
     reply.status(500).send({ error })
   }

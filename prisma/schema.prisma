@@ -11,28 +11,11 @@ datasource db {
 }
 
 model User {
-  id            String  @id @default(uuid())
-  name          String
-  email         String  @unique
-  RA            BigInt?
-  password_hash String
-
-  user_Types    UserTypes? @relation(fields: [users_TypesId], references: [id])
-  users_TypesId String?
-
-  @@map("users")
-}
-
-model UserTypes {
-  id          String @id @default(uuid())
-  description String
-  User        User[]
-
-  @@map("users_type")
-}
-
-model Menu {
-  id          String @id @default(uuid())
-  title       String
-  description String
+  id              String    @id @default(uuid())
+  name            String
+  email           String    @unique
+  password_hash   String
+  RA              BigInt?
+  date_create     DateTime  @default(now())
+  last_date_acess DateTime? @default(now())
 }

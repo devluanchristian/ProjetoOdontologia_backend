@@ -18,6 +18,10 @@ export class AuthenticateUseCase {
   }: IAuthenticateUseCaseRequest): Promise<IAuthenticateUseCaseResponse> {
     const user = await this.usersRepository.findbyEmail(email)
 
+    if (user?.last_date_acess) {
+      user.last_date_acess = new Date()
+    }
+
     if (!user) {
       throw new Error()
     }
@@ -25,6 +29,7 @@ export class AuthenticateUseCase {
     if (!doesPasswordMatches) {
       throw new Error()
     }
+
     return {
       user,
     }

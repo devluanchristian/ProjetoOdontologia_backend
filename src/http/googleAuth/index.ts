@@ -1,10 +1,8 @@
 import fastifyPassport from '@fastify/passport'
-
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import { Strategy as GoogleStrategy } from 'passport-google-oauth2'
 import fastifySession from '@fastify/session'
 import fastifyCookie from '@fastify/cookie'
-import { app } from '@/app'
 
 export async function authenticateGoogle(app: FastifyInstance) {
   // Registra o plugin fastify-cookie para gerenciar cookies.

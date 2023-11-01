@@ -1,5 +1,6 @@
 import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-repository'
 import { AuthenticateUseCase } from '@/use-cases/authenticate-use-case'
+import { InvalidCredentials } from '@/use-cases/error/invalidCredentials'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
@@ -23,6 +24,8 @@ export async function authenticate(
     })
     reply.status(200).send(user)
   } catch (error) {
-    reply.status(500).send({ error })
+    if (error instanceof InvalidCredentials) {
+      return reply.status(400).send({ message: error.message })
+    }
   }
 }

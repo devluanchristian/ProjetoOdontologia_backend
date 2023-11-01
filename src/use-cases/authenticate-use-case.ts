@@ -1,6 +1,7 @@
 import { IUsersRepository } from '@/repositories/users-repository'
 import { User } from '@prisma/client'
 import { compare } from 'bcryptjs'
+import { InvalidCredentials } from './error/invalidCredentials'
 
 interface IAuthenticateUseCaseRequest {
   email: string
@@ -23,11 +24,11 @@ export class AuthenticateUseCase {
     }
 
     if (!user) {
-      throw new Error()
+      throw new InvalidCredentials()
     }
     const doesPasswordMatches = await compare(password, user.password_hash)
     if (!doesPasswordMatches) {
-      throw new Error()
+      throw new InvalidCredentials()
     }
 
     return {

@@ -2,20 +2,27 @@ import fastify from 'fastify'
 import { ZodError } from 'zod'
 import { env } from './env'
 import { appRoutes } from './http/routes'
+import { authenticateGoogle } from './http/googleAuth'
 
+// Crie uma instância do Fastify
 export const app = fastify()
+
+// Registre as rotas do seu aplicativo
 app.register(appRoutes)
+app.register(authenticateGoogle)
+
+// Lidere com erros de validação Zod
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
     return reply.status(400).send({
       message: 'Validation error',
-      issues: error.format(),
+      issues: error.issues,
     })
   }
   if (env.NODE_ENV !== 'production') {
     console.error(error)
   } else {
-    // sda
+    // Trate os erros de produção aqui
   }
   return reply.status(500).send({ message: 'Internal server error' })
 })

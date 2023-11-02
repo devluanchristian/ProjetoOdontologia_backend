@@ -31,6 +31,7 @@ export async function authenticateGoogle(app: FastifyInstance) {
       },
       (accessToken, refreshToken, profile, done) => {
         // Aqui você pode processar o perfil do usuário após a autenticação.
+        console.log(profile)
         return done(null, profile)
       },
     ),

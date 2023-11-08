@@ -3,13 +3,18 @@ import { ZodError } from 'zod'
 import { env } from './env'
 import { appRoutes } from './http/routes'
 import { authenticateGoogle } from './http/googleAuth'
+import fastifyJwt from '@fastify/jwt'
 
 // Crie uma instância do Fastify
 export const app = fastify()
 
 // Registre as rotas do seu aplicativo
+
 app.register(appRoutes)
 app.register(authenticateGoogle)
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET_KEY,
+})
 
 // Lidere com erros de validação Zod
 app.setErrorHandler((error, _, reply) => {

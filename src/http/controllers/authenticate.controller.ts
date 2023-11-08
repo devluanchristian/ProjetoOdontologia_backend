@@ -22,7 +22,16 @@ export async function authenticate(
       email,
       password,
     })
-    reply.status(200).send(user)
+    // criando o token após a autenticação do usuario
+    const token = await reply.jwtSign(
+      {},
+      {
+        sign: {
+          sub: user.id,
+        },
+      },
+    )
+    reply.status(200).send({ token })
   } catch (error) {
     if (error instanceof InvalidCredentials) {
       return reply.status(400).send({ message: error.message })

@@ -13,7 +13,7 @@ export const app = fastify()
 app.register(appRoutes)
 app.register(authenticateGoogle)
 app.register(fastifyJwt, {
-  secret: env.JWT_SECRET_KEY,
+  secret: 'projetoodonto',
 })
 
 // Lidere com erros de validação Zod

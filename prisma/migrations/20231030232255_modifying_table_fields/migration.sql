@@ -24,7 +24,7 @@ CREATE TABLE "User" (
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password_hash" TEXT NOT NULL,
-    "RA" BIGINT,
+    "ra" BIGINT,
     "date_create" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "last_date_acess" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 

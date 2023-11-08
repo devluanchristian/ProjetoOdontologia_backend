@@ -8,9 +8,10 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     name: z.string(),
     email: z.string().email(),
     password: z.string().min(6),
+    ra: z.string().min(8),
   })
 
-  const { name, email, password } = registerBodySchema.parse(request.body)
+  const { name, email, password, ra } = registerBodySchema.parse(request.body)
 
   try {
     const usersRepository = new PrismaUsersRepository()
@@ -19,6 +20,7 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
       name,
       email,
       password,
+      ra,
     })
     reply.status(201).send(user)
   } catch (error) {

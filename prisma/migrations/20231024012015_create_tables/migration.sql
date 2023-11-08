@@ -3,7 +3,7 @@ CREATE TABLE "users" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "RA" BIGINT NOT NULL,
+    "ra" BIGINT NOT NULL,
     "password_hash" TEXT NOT NULL,
     "users_TypesId" TEXT NOT NULL,
 

@@ -8,7 +8,6 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     name: z.string(),
     email: z.string().email(),
     password: z.string().min(6),
-    ra: z.string().min(8),
   })
 
   const { name, email, password, ra } = registerBodySchema.parse(request.body)

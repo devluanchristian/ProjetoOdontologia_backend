@@ -2,7 +2,7 @@ import fastify from 'fastify'
 import { ZodError } from 'zod'
 import { env } from './env'
 import { appRoutes } from './http/routes'
-import { authenticateGoogle } from './http/googleAuth'
+import { authenticateGoogle } from './http/controllers/googleAuth'
 import fastifyJwt from '@fastify/jwt'
 
 // Crie uma instância do Fastify

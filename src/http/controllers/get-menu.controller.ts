@@ -20,9 +20,6 @@ export async function getMenu(request: FastifyRequest, reply: FastifyReply) {
 
     return reply.status(200).send(menu)
   } catch (error) {
-    if (error) {
-      return reply.status(409).send(error)
-    }
-    throw error
+    return reply.status(400).send(error)
   }
 }

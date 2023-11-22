@@ -11,11 +11,20 @@ datasource db {
 }
 
 model User {
-  id              String   @id @default(uuid())
+  id              String    @id @default(uuid())
   name            String
-  email           String   @unique
+  email           String    @unique
   password_hash   String
   ra              String?
-  date_create     DateTime @default(now())
+  date_create     DateTime  @default(now())
   last_date_acess DateTime?
 }
+
+model Menu {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  image       String?
+  sub_MenuId  Int?
+}
+

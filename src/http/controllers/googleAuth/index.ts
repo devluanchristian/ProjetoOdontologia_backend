@@ -55,6 +55,7 @@ export async function authenticateGoogle(app: FastifyInstance) {
     },
     async (req: FastifyRequest, reply: FastifyReply) => {
       const user = req.user
+      console.log(user)
       reply.status(200).send(user)
     },
   )

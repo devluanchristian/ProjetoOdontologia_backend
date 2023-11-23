@@ -11,8 +11,8 @@ export class PrismaMenuRepository implements IMenuRepository {
   }
 
   async findById(sub_MenuId: number) {
-    const menu = await prisma.menu.findUnique({
-      where: { id: sub_MenuId },
+    const menu = await prisma.menu.findMany({
+      where: { sub_MenuId },
     })
     return menu
   }

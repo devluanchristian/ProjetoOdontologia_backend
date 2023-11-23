@@ -2,7 +2,7 @@ import { IMenuRepository } from '@/repositories/menu-repository'
 import { Menu } from '@prisma/client'
 
 interface IGetMenuUseCaseRequest {
-  menuId: number
+  sub_MenuId: number
 }
 
 interface IGetMenuUseCaseResponse {
@@ -13,9 +13,9 @@ export class GetMenuUseCase {
   constructor(private menuRepository: IMenuRepository) {}
 
   async execute({
-    menuId,
+    sub_MenuId,
   }: IGetMenuUseCaseRequest): Promise<IGetMenuUseCaseResponse> {
-    const menu = await this.menuRepository.findById(menuId)
+    const menu = await this.menuRepository.findById(sub_MenuId)
 
     if (!menu) {
       throw new Error('Menu not found')

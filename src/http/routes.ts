@@ -8,5 +8,5 @@ export async function appRoutes(app: FastifyInstance) {
   app.post('/signup', register)
   app.post('/signin', authenticate)
   app.post('/menu', createMenu)
-  app.get('/menu/:menuId', getMenu)
+  app.get('/menu/:sub_MenuId', getMenu)
 }

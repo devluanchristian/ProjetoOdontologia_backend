@@ -4,18 +4,20 @@ import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
 
 export async function getMenu(request: FastifyRequest, reply: FastifyReply) {
-  const getPetSchema = z.object({
-    menuId: z.number(),
+  const getMenuSchema = z.object({
+    sub_MenuId: z.string().refine((value) => !isNaN(Number(value)), {
+      message: 'sub_MenuId must be a valid number string',
+    }),
   })
 
-  const { menuId } = getPetSchema.parse(request.params)
+  const { sub_MenuId } = getMenuSchema.parse(request.params)
 
   try {
     const menuRepository = new PrismaMenuRepository()
     const getMenuUseCase = new GetMenuUseCase(menuRepository)
 
     const { menu } = await getMenuUseCase.execute({
-      menuId,
+      sub_MenuId: Number(sub_MenuId), // Converter a string para número
     })
 
     return reply.status(200).send(menu)

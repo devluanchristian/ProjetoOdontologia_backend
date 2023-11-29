@@ -25,6 +25,7 @@ model Menu {
   title       String
   description String?
   image       String?
+  type        String?
   sub_MenuId  Int?
 }
 

@@ -8,12 +8,12 @@ export async function createMenu(request: FastifyRequest, reply: FastifyReply) {
     title: z.string(),
     description: z.string(),
     image: z.string(),
+    type: z.string(),
     sub_MenuId: z.number(),
   })
 
-  const { title, description, image, sub_MenuId } = createMenuBodySchema.parse(
-    request.body,
-  )
+  const { title, description, image, type, sub_MenuId } =
+    createMenuBodySchema.parse(request.body)
 
   try {
     const menuRepository = new PrismaMenuRepository()
@@ -22,6 +22,7 @@ export async function createMenu(request: FastifyRequest, reply: FastifyReply) {
       title,
       description,
       image,
+      type,
       sub_MenuId,
     })
 

@@ -6,6 +6,7 @@ interface ICreateMenuUseCaseRequest {
   description?: string
   typeImage?: string
   image?: string
+  typeImage?: string
   sub_MenuId?: number
 }
 interface ICreateMenuUseCaseResponse {

@@ -4,7 +4,6 @@ import { Menu } from '@prisma/client'
 interface ICreateMenuUseCaseRequest {
   title: string
   description?: string
-  typeImage?: string
   image?: string
   typeImage?: string
   sub_MenuId?: number

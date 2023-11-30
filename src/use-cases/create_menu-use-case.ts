@@ -5,7 +5,7 @@ interface ICreateMenuUseCaseRequest {
   title: string
   description?: string
   image?: string
-  type?: string
+  typeImage?: string
   sub_MenuId?: number
 }
 interface ICreateMenuUseCaseResponse {
@@ -19,14 +19,14 @@ export class CreateMenuUseCase {
     title,
     description,
     image,
-    type,
+    typeImage,
     sub_MenuId,
   }: ICreateMenuUseCaseRequest): Promise<ICreateMenuUseCaseResponse> {
     const menu = await this.menuRepository.create({
       title,
       description,
       image,
-      type,
+      typeImage,
       sub_MenuId,
     })
     return { menu }

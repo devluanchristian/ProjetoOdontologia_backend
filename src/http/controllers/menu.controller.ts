@@ -8,11 +8,11 @@ export async function createMenu(request: FastifyRequest, reply: FastifyReply) {
     title: z.string(),
     description: z.string(),
     image: z.string(),
-    type: z.string(),
+    typeImage: z.string(),
     sub_MenuId: z.number(),
   })
 
-  const { title, description, image, type, sub_MenuId } =
+  const { title, description, image, typeImage, sub_MenuId } =
     createMenuBodySchema.parse(request.body)
 
   try {
@@ -22,7 +22,7 @@ export async function createMenu(request: FastifyRequest, reply: FastifyReply) {
       title,
       description,
       image,
-      type,
+      typeImage,
       sub_MenuId,
     })
 

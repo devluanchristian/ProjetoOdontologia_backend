@@ -21,10 +21,10 @@ model User {
 }
 
 model Menu {
-  id          Int      @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   title       String
   description String?
   image       String?
+  typeImage   String?
   sub_MenuId  Int?
 }
-

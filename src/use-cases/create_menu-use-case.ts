@@ -4,6 +4,7 @@ import { Menu } from '@prisma/client'
 interface ICreateMenuUseCaseRequest {
   title: string
   description?: string
+  typeImage?: string
   image?: string
   sub_MenuId?: number
 }
@@ -18,12 +19,14 @@ export class CreateMenuUseCase {
     title,
     description,
     image,
+    typeImage,
     sub_MenuId,
   }: ICreateMenuUseCaseRequest): Promise<ICreateMenuUseCaseResponse> {
     const menu = await this.menuRepository.create({
       title,
       description,
       image,
+      typeImage,
       sub_MenuId,
     })
     return { menu }
